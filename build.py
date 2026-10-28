@@ -139,7 +139,7 @@ def render_research(c: dict, base: str) -> str:
     return f"""
 <section id="research" aria-labelledby="research-h">
   <h2 id="research-h">Ongoing research</h2>
-  <p class="section-note">Statuses as reported on {date}. Working labels will be replaced by manuscript titles when available.</p>
+  <p class="section-note">Statuses as reported on {date}. Titles of unpublished work may change before submission.</p>
   <div class="cards">{''.join(cards)}
   </div>
 </section>"""

@@ -65,17 +65,26 @@ label = "Repository"
 url = "https://github.com/adityasissodiya/rescue-ois"
 
 [[research]]
-label = "Agents and access control"
-label_note = "Working label. Possible paper with Casper."
+label = "Task-Scoped Authorization for Local AI Agents"
+label_note = "Working title. Possible paper with Casper Lundberg, Luleå University of Technology."
 status_key = "exploratory"
 status_label = "Exploratory"
 status_detail = "Collaboration in an exploratory phase; scope and contribution still to be defined."
-summary = "The repository README gives the working title “Task-Scoped Authorization for Local AI Agents” and describes an early-stage project on limiting what AI agents may do on a user's behalf, even when the agent is manipulated or delegates work."
-to_confirm = ["Paper title and scope", "Casper's surname and affiliation", "Agreed contribution and author list"]
+summary = "An early-stage project on limiting what AI agents may do on a user's behalf to exactly what the current task needs, even when the agent is manipulated or delegates work to other agents."
+to_confirm = ["Scope and contribution", "Author list"]
+
+[[research.links]]
+label = "Manuscript (Overleaf)"
+url = "https://www.overleaf.com/project/6ae21acd32ebf99439df3204"
+access = "sign-in"
 
 [[research.links]]
 label = "Repository"
 url = "https://github.com/adityasissodiya/agentsAndAccessControl"
+
+[[research.links]]
+label = "Casper Lundberg (LTU profile)"
+url = "https://www.ltu.se/en/staff/c/casper-lundberg"
 
 [[research]]
 label = "EQuack: Deterministic Replay for Eventually Consistent Access Control"
@@ -102,8 +111,8 @@ kind = "suggested"
 target_date = ""
 
 [[actions]]
-effort = "Agents and access control"
-next_action = "Agree with Casper on the research question, the expected contribution and a first feasibility check."
+effort = "Task-Scoped Authorization for Local AI Agents"
+next_action = "Agree with Casper Lundberg on the research question, the expected contribution and a first feasibility check."
 kind = "suggested"
 target_date = ""
 
@@ -240,7 +249,7 @@ date = ""
 [todo]
 items = [
   "Target venue and submission date for rescue-ois",
-  "Casper's surname and affiliation, and the agreed scope of the paper",
+  "Agreed scope and author list of the Task-Scoped Authorization paper",
   "Course title, official code, credits, period and assessment deadlines",
   "Completed and planned courses, and credit totals",
   "Current doctoral supervisory team",

@@ -47,6 +47,8 @@ python3 -m http.server -d /tmp/preview 8000   # open http://localhost:8000/adity
   `assets/video/`, then add a `video = { ... }` line to the research entry (see the rescue-ois entry).
 - **Status colours:** `status_key` is one of `preparation`, `exploratory`, `review`,
   `published`, `ongoing`, `todo`. The visible text comes from `status_label`.
+- **Never publish Overleaf share links** (`.../share#...`, `overleaf.com/read/...`): they grant access
+  to anyone holding them. Use the plain `https://www.overleaf.com/project/<id>` address.
 - **Private links:** add `access = "sign-in"` to links that need sign-in (Overleaf, Canvas, ISP).
   Listing a link does not grant access to it, but it does make the address public.
 
@@ -66,12 +68,15 @@ python3 -m http.server -d /tmp/preview 8000   # open http://localhost:8000/adity
 - rescue-ois manuscript title and author order: supplied by Aditya on 2026-10-28. The video
   (`assets/video/`) and its captions were supplied by Aditya the same day; the captions are
   converted from the supplied SRT file. Replace `research.video` paths to swap the video.
+- Task-Scoped Authorization: working title, Casper Lundberg's LTU profile and the Overleaf
+  project supplied by Aditya on 2026-10-28. The Overleaf share token in the supplied link was
+  deliberately left out; the page links the plain project URL, which requires sign-in.
 - Thesis supervisors are as listed in the thesis; the current supervisory team is not stated.
 
 ## Maintenance checklist (information still missing)
 
 - [ ] Target venue and submission date for rescue-ois
-- [ ] Casper's surname and affiliation; agreed scope of the possible paper
+- [ ] Agreed scope and author list of the Task-Scoped Authorization paper (with Casper Lundberg)
 - [ ] Course title, official code, credits, period, assessment deadlines
 - [ ] Completed and planned courses; credit totals
 - [ ] Current doctoral supervisory team
