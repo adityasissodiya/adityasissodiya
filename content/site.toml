@@ -23,6 +23,9 @@ role = "PhD candidate in Cyber-Physical Systems"
 affiliation = "Luleå University of Technology, Sweden"
 focus = "My research concerns access control in data ecosystems: how stakeholders negotiate access policies, how those policies can be formally verified before deployment, and how they can be enforced consistently across distributed systems."
 email = "aditya.sissodiya@ltu.se"
+# Portrait shown beside the name. Path is relative to the site root; leave "" to hide it.
+photo = "assets/aditya.jpg"
+photo_alt = "Portrait of Aditya Sissodiya"
 
 [[profile.links]]
 label = "LTU staff profile"

@@ -75,16 +75,25 @@ def link_list(items: list[dict], cls: str = "links") -> str:
     return f'<ul class="{cls}">{lis}</ul>'
 
 
-def render_profile(c: dict) -> str:
+def render_profile(c: dict, base: str) -> str:
     p = c["profile"]
     links = list(p["links"]) + [{"label": p["email"], "url": f"mailto:{p['email']}"}]
+    photo = ""
+    if p.get("photo"):
+        photo = (
+            f'<img class="portrait" src="{base}{e(p['photo'])}" alt="{e(p.get('photo_alt', ''))}"'
+            ' width="480" height="480">'
+        )
     return f"""
 <section class="profile" aria-labelledby="name">
+  {photo}
+  <div class="profile-text">
   <h1 id="name">{e(p['name'])}</h1>
   <p class="role">{e(p['role'])}<br>{e(p['affiliation'])}</p>
   <p class="lede">{e(p['focus'])}</p>
   {link_list(links, 'profile-links')}
   <p class="updated">Content status as of <time datetime="{e(c['site']['status_date'])}">{fmt_date(c['site']['status_date'])}</time></p>
+  </div>
 </section>"""
 
 
@@ -286,6 +295,8 @@ def page(c: dict, body: str, base: str, title: str | None = None) -> str:
         "%3Crect width='32' height='32' rx='6' fill='%231f4e79'/%3E%3Ctext x='16' y='22' "
         "font-family='Georgia,serif' font-size='16' fill='white' text-anchor='middle'%3EAS%3C/text%3E%3C/svg%3E"
     )
+    photo = c["profile"].get("photo")
+    og_image = f'<meta property="og:image" content="{e(s["base_url"] + photo)}">' if photo else ""
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -298,6 +309,7 @@ def page(c: dict, body: str, base: str, title: str | None = None) -> str:
 <meta property="og:description" content="{e(s['description'])}">
 <meta property="og:url" content="{e(s['base_url'])}">
 <meta property="og:type" content="profile">
+{og_image}
 <link rel="icon" href="{favicon}">
 <link rel="stylesheet" href="{base}assets/style.css">
 </head>
@@ -337,7 +349,7 @@ def build(out: Path) -> None:
     (out / ".nojekyll").write_text("")
 
     body = "".join([
-        render_profile(c),
+        render_profile(c, base),
         render_research(c),
         render_actions(c),
         render_publications(c),

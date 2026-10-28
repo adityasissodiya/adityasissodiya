@@ -125,7 +125,19 @@ main:focus { outline: none; }
 /* Sections */
 main { padding-bottom: 3rem; }
 main > section { margin: 0 0 3.5rem; }
-.profile { padding: 3.5rem 0 1rem; max-width: var(--measure); }
+.profile { padding: 3.5rem 0 1rem; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 1.5rem 2.5rem; }
+.profile-text { flex: 1 1 22rem; max-width: var(--measure); }
+.portrait {
+  flex: 0 0 auto;
+  width: 11rem; height: 11rem; object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+@media (min-width: 44rem) {
+  .profile { flex-direction: row-reverse; justify-content: flex-end; }
+  .portrait { width: 13rem; height: 13rem; margin-top: .5rem; }
+}
 .role { font-size: 1.15rem; color: var(--muted); margin-bottom: 1.25rem; }
 .lede { font-size: 1.15rem; }
 .updated { color: var(--muted); font-size: .95rem; margin-top: 1rem; }
