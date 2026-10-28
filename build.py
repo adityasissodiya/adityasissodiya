@@ -112,6 +112,7 @@ def render_research(c: dict) -> str:
       {status(r['status_key'], r['status_label'])}
     </div>
     <p class="meta">{e(r['label_note'])}</p>
+    {f'<p class="authors">{e(r["authors"])}</p>' if r.get("authors") else ""}
     <p>{e(r['status_detail'])}</p>
     {summary}
     {confirm}

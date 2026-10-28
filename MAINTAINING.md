@@ -57,14 +57,17 @@ python3 -m http.server -d /tmp/preview 8000   # open http://localhost:8000/adity
   marked "to confirm" on the page.
 - Publication and thesis metadata: DiVA records diva2:1991066 and diva2:2020653, and the
   SCITEPRESS record for DOI 10.5220/0013130000003899. One-line summaries paraphrase the abstracts.
+- EQuack (IEEE Internet of Things Journal): title, author order, article type and submission
+  date (3 June 2026) from the journal's submission overview, supplied by Aditya on 2026-10-28.
+  The one-line summary paraphrases the submitted abstract and the public licentiate thesis.
+  Co-author emails, funding details and manuscript files are deliberately not published.
 - Thesis supervisors are as listed in the thesis; the current supervisory team is not stated.
 
 ## Maintenance checklist (information still missing)
 
-- [ ] Formal titles and co-authors of the rescue-ois and IEEE IoT Journal manuscripts
+- [ ] Formal title and co-authors of the rescue-ois manuscript
 - [ ] Target venue and submission date for rescue-ois
 - [ ] Casper's surname and affiliation; agreed scope of the possible paper
-- [ ] Submission date of the IEEE Internet of Things Journal manuscript
 - [ ] Course title, official code, credits, period, assessment deadlines
 - [ ] Completed and planned courses; credit totals
 - [ ] Current doctoral supervisory team

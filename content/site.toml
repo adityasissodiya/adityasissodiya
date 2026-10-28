@@ -75,13 +75,14 @@ label = "Repository"
 url = "https://github.com/adityasissodiya/agentsAndAccessControl"
 
 [[research]]
-label = "IEEE Internet of Things Journal submission"
-label_note = "Manuscript title: to add."
+label = "EQuack: Deterministic Replay for Eventually Consistent Access Control"
+label_note = "IEEE Internet of Things Journal, regular article."
+authors = "Aditya Sissodiya, Johan Kristiansson, Eric Chiquito, and Ulf Bodin"
 status_key = "review"
 status_label = "Under review"
-status_detail = "Submitted to IEEE Internet of Things Journal; awaiting decision."
-summary = ""
-to_confirm = ["Formal manuscript title and co-authors", "Submission date"]
+status_detail = "Submitted on 3 June 2026; awaiting decision."
+summary = "An access-control model for intermittently connected, multi-stakeholder systems: replicas keep operating while disconnected and, after reconnecting, converge on the same authorized state by deterministically replaying a shared log through a deny-wins authorization gate. Evaluated with a Rust prototype."
+to_confirm = []
 
 [[research.links]]
 label = "Manuscript (Overleaf)"
@@ -104,8 +105,8 @@ kind = "suggested"
 target_date = ""
 
 [[actions]]
-effort = "IEEE Internet of Things Journal submission"
-next_action = "Record the submission date; plan a response once a decision arrives."
+effort = "EQuack (IEEE Internet of Things Journal)"
+next_action = "Check the editorial status; plan a response once a decision arrives."
 kind = "suggested"
 target_date = ""
 
@@ -235,10 +236,9 @@ date = ""
 
 [todo]
 items = [
-  "Formal titles and co-authors of the two unpublished manuscripts",
+  "Formal title and co-authors of the rescue-ois manuscript",
   "Target venue and submission date for rescue-ois",
   "Casper's surname and affiliation, and the agreed scope of the paper",
-  "Submission date of the IEEE Internet of Things Journal manuscript",
   "Course title, official code, credits, period and assessment deadlines",
   "Completed and planned courses, and credit totals",
   "Current doctoral supervisory team",
