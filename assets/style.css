@@ -173,6 +173,7 @@ main > section { margin: 0 0 3.5rem; }
 .status-review { background: var(--s-review-bg); color: var(--s-review-fg); }
 .status-published { background: var(--s-published-bg); color: var(--s-published-fg); }
 .status-ongoing { background: var(--s-ongoing-bg); color: var(--s-ongoing-fg); }
+.status-completed { background: var(--s-published-bg); color: var(--s-published-fg); }
 .status-todo { background: var(--s-todo-bg); color: var(--s-todo-fg); }
 .kind-suggested { border: 1px dashed var(--muted); color: var(--muted); }
 .kind-confirmed { background: var(--s-published-bg); color: var(--s-published-fg); }
@@ -230,11 +231,20 @@ tbody tr:last-child > * { border-bottom: none; }
   table.stack thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   table.stack tr { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; margin-bottom: .9rem; padding: .4rem 0; }
   table.stack th, table.stack td { border: none; padding: .3rem .9rem; }
+  table.stack td.empty { display: none; }
   table.stack td::before {
     content: attr(data-label);
     display: block; font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted);
   }
 }
+
+abbr[title] { text-decoration: underline dotted; text-underline-offset: .15em; cursor: help; }
+
+.facts { display: grid; gap: .4rem 1.5rem; margin: 0 0 1.25rem; max-width: var(--measure); }
+.facts div { display: grid; grid-template-columns: 9.5rem 1fr; gap: 1rem; }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; }
+@media (max-width: 30rem) { .facts div { grid-template-columns: 1fr; gap: 0; } }
 
 .notes { color: var(--muted); font-size: .95rem; padding-left: 1.1rem; margin-top: .9rem; }
 

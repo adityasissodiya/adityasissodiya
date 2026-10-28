@@ -200,13 +200,13 @@ label = "Full-text PDF (DiVA)"
 url = "https://ltu.diva-portal.org/smash/get/diva2%3A2020653/FULLTEXT01.pdf"
 
 # --------------------------------------------------------------------------------------------
-# Courses. code and credits: leave "" until confirmed from the official course record.
+# Courses, as named in Ladok. Fill code and credits from Ladok only; leave "" when unknown.
+# status_key: "ongoing" or "completed".
 
 [[courses]]
 title = ""
 code = ""
 credits = ""
-period = ""
 status_key = "ongoing"
 status_label = "Ongoing"
 note = "The number 27166 identifies the Canvas page; it is not the academic course code."
@@ -216,24 +216,73 @@ label = "Canvas course page"
 url = "https://canvas.ltu.se/courses/27166"
 access = "sign-in"
 
+[[courses]]
+title = "Mobile and distributed computing systems"
+code = "D7024E"
+credits = "7.5"
+status_key = "completed"
+status_label = "Completed"
+
+[[courses]]
+title = "IoT-based industrial automation and digitalization"
+code = ""
+credits = "7.5"
+status_key = "completed"
+status_label = "Completed"
+
+[[courses]]
+title = "Advanced Data Mining"
+code = ""
+credits = "7.5"
+status_key = "completed"
+status_label = "Completed"
+
+[[courses]]
+title = "Academic publishing"
+code = "FOR044F"
+credits = "4.5"
+status_key = "completed"
+status_label = "Completed"
+
+[[courses]]
+title = "Research ethics"
+code = "FOR049F"
+credits = "4.5"
+status_key = "completed"
+status_label = "Completed"
+
 # --------------------------------------------------------------------------------------------
-# Study planning.
+# Study planning. Credit figures are copied from Ladok; build.py checks that course_credits
+# equals the sum of the completed courses above.
 
 [study]
 isp_url = "https://ltu-isp.ltu.se/isp/studyplan/studyPlan?i=10624"
+programme = "Cyber-Physical Systems"
+programme_code = "SRTCYBFY"
+programme_credits = "240.0"
+total_credits = "121.5"
+thesis_credits = "90.0"
+course_credits = "31.5"
+credits_source = "Ladok"
+credits_date = "2026-10-28"
 
 [[study.milestones]]
-milestone = "Licentiate thesis"
-state = "Published"
+milestone = "Licentiate (SRT002L)"
+state = "Completed; thesis published"
 date = "2026"
 
 [[study.milestones]]
-milestone = "Next ISP review"
-state = "To add"
+milestone = "Doctoral studies (SRT001D)"
+state = "Registered"
 date = ""
 
 [[study.milestones]]
-milestone = "Course credits (completed and planned)"
+milestone = "Course credits required for the doctorate"
+state = "To confirm"
+date = ""
+
+[[study.milestones]]
+milestone = "Next ISP review"
 state = "To add"
 date = ""
 
@@ -250,8 +299,9 @@ date = ""
 items = [
   "Target venue and submission date for rescue-ois",
   "Agreed scope and author list of the Task-Scoped Authorization paper",
-  "Course title, official code, credits, period and assessment deadlines",
-  "Completed and planned courses, and credit totals",
+  "Current course: title, official code, credits, period and assessment deadlines",
+  "Course codes for IoT-based industrial automation and digitalization, and Advanced Data Mining",
+  "Planned courses, and the course credits required for the doctorate",
   "Current doctoral supervisory team",
   "Next ISP review date and doctoral thesis milestones",
 ]

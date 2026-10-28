@@ -41,8 +41,9 @@ python3 -m http.server -d /tmp/preview 8000   # open http://localhost:8000/adity
   `to_confirm` and from `[todo]`.
 - **Next actions:** edit `[[actions]]`. Keep `kind = "suggested"` until the action is agreed;
   then use `kind = "confirmed"` and set `target_date = "YYYY-MM-DD"`. Leave dates empty when unknown.
-- **Courses:** fill `title`, `code`, `credits`, `period` from the official course record only.
-  Canvas page numbers are not course codes. Add completed courses as further `[[courses]]` blocks.
+- **Courses:** fill `title`, `code`, `credits` from Ladok only. Canvas page numbers are not
+  course codes. When a course is completed, set `status_key = "completed"` and update the
+  credit totals in `[study]` from Ladok; the build checks that the numbers add up.
 - **Videos:** put the MP4 (H.264/AAC, under ~50 MB), a poster JPEG and a `.vtt` caption file in
   `assets/video/`, then add a `video = { ... }` line to the research entry (see the rescue-ois entry).
 - **Status colours:** `status_key` is one of `preparation`, `exploratory`, `review`,
@@ -71,14 +72,18 @@ python3 -m http.server -d /tmp/preview 8000   # open http://localhost:8000/adity
 - Task-Scoped Authorization: working title, Casper Lundberg's LTU profile and the Overleaf
   project supplied by Aditya on 2026-10-28. The Overleaf share token in the supplied link was
   deliberately left out; the page links the plain project URL, which requires sign-in.
+- Completed courses, credits, programme (SRTCYBFY, 240 hp) and registrations: Ladok, as
+  supplied by Aditya on 2026-10-28. No grades are published. `build.py` fails if the completed
+  courses do not add up to `study.course_credits`, or thesis + courses to `study.total_credits`.
 - Thesis supervisors are as listed in the thesis; the current supervisory team is not stated.
 
 ## Maintenance checklist (information still missing)
 
 - [ ] Target venue and submission date for rescue-ois
 - [ ] Agreed scope and author list of the Task-Scoped Authorization paper (with Casper Lundberg)
-- [ ] Course title, official code, credits, period, assessment deadlines
-- [ ] Completed and planned courses; credit totals
+- [ ] Current course: title, official code, credits, period, assessment deadlines
+- [ ] Codes for “IoT-based industrial automation and digitalization” and “Advanced Data Mining”
+- [ ] Planned courses; course credits required for the doctorate
 - [ ] Current doctoral supervisory team
 - [ ] Next ISP review date; doctoral thesis milestones
 - [ ] Optional: code/data links for published papers, Google Scholar, CV

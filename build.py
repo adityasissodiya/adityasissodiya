@@ -28,7 +28,7 @@ NAV = [
     ("links", "Links"),
 ]
 
-STATUS_KEYS = {"preparation", "exploratory", "review", "published", "ongoing", "todo"}
+STATUS_KEYS = {"preparation", "exploratory", "review", "published", "ongoing", "completed", "todo"}
 
 
 def e(text: str) -> str:
@@ -50,6 +50,11 @@ def unknown(text: str = "To add") -> str:
 
 def value_or_unknown(value: str, text: str = "To add") -> str:
     return e(value) if value else unknown(text)
+
+
+def hp(value: str) -> str:
+    """Credits in Swedish higher education credits (1 hp = 1 ECTS credit)."""
+    return f'{e(value)}&nbsp;<abbr title="higher education credits (1 hp = 1 ECTS credit)">hp</abbr>'
 
 
 def status(key: str, label: str) -> str:
@@ -220,45 +225,67 @@ def render_courses(c: dict) -> str:
     rows = []
     for k in c["courses"]:
         title = e(k["title"]) if k["title"] else f"Current LTU course {unknown('title to add')}"
+        workspace = "".join(link(l) for l in k.get("links", []))
+        ws_cell = (
+            f'<td data-label="Workspace">{workspace}</td>' if workspace
+            else '<td data-label="Workspace" class="empty"><span class="meta">—</span></td>'
+        )
         rows.append(f"""
       <tr>
         <th scope="row" data-label="Course">{title}</th>
         <td data-label="Code">{value_or_unknown(k['code'])}</td>
-        <td data-label="Credits">{value_or_unknown(k['credits'])}</td>
-        <td data-label="Period">{value_or_unknown(k['period'])}</td>
+        <td data-label="Credits">{hp(k['credits']) if k['credits'] else unknown()}</td>
         <td data-label="Status">{status(k['status_key'], k['status_label'])}</td>
-        <td data-label="Workspace">{''.join(link(l) for l in k.get('links', []))}</td>
+        {ws_cell}
       </tr>""")
     notes = "".join(f"<li>{e(k['note'])}</li>" for k in c["courses"] if k.get("note"))
+    s = c["study"]
     return f"""
 <section id="courses" aria-labelledby="courses-h">
   <h2 id="courses-h">Courses</h2>
   <div class="table-wrap">
   <table class="stack">
-    <thead><tr><th scope="col">Course</th><th scope="col">Code</th><th scope="col">Credits</th><th scope="col">Period</th><th scope="col">Status</th><th scope="col">Workspace</th></tr></thead>
+    <thead><tr><th scope="col">Course</th><th scope="col">Code</th><th scope="col">Credits</th><th scope="col">Status</th><th scope="col">Workspace</th></tr></thead>
     <tbody>{''.join(rows)}
     </tbody>
   </table>
   </div>
-  <ul class="notes">{notes}<li>Completed and planned courses will be added from the official study record.</li></ul>
+  <ul class="notes">{notes}<li>Completed courses as recorded in {e(s['credits_source'])} on {fmt_date(s['credits_date'])}. Planned courses: to add.</li></ul>
 </section>"""
+
+
+def check_credits(c: dict) -> None:
+    """Fail the build if the Ladok figures and the course list disagree."""
+    s = c["study"]
+    completed = sum(float(k["credits"]) for k in c["courses"] if k["status_key"] == "completed")
+    if abs(completed - float(s["course_credits"])) > 1e-9:
+        raise ValueError(f"completed courses sum to {completed} hp but study.course_credits is {s['course_credits']}")
+    if abs(float(s["thesis_credits"]) + completed - float(s["total_credits"])) > 1e-9:
+        raise ValueError("study.thesis_credits + course credits != study.total_credits")
 
 
 def render_study(c: dict) -> str:
     s = c["study"]
     rows = []
     for m in s["milestones"]:
-        state = unknown(m["state"]) if m["state"].lower().startswith("to ") else e(m["state"])
+        pending = m["state"].lower().startswith("to ")
+        state = unknown(m["state"]) if pending else e(m["state"])
+        date = e(fmt_date(m["date"])) if m["date"] else (unknown("Not set") if pending else '<span class="meta">—</span>')
         rows.append(f"""
       <tr>
         <th scope="row" data-label="Milestone">{e(m['milestone'])}</th>
         <td data-label="Status">{state}</td>
-        <td data-label="Date">{value_or_unknown(fmt_date(m['date']) if m['date'] else '', 'Not set')}</td>
+        <td data-label="Date">{date}</td>
       </tr>""")
     isp = link({"label": "Individual Study Plan (ISP)", "url": s["isp_url"], "access": "sign-in"})
     return f"""
 <section id="study-planning" aria-labelledby="study-h">
   <h2 id="study-h">Study planning</h2>
+  <dl class="facts">
+    <div><dt>Programme</dt><dd>{e(s['programme'])} ({e(s['programme_code'])}), {hp(s['programme_credits'])}</dd></div>
+    <div><dt>Credits recorded</dt><dd>{hp(s['total_credits'])}: thesis {hp(s['thesis_credits'])}, courses {hp(s['course_credits'])}</dd></div>
+    <div><dt>Source</dt><dd>{e(s['credits_source'])}, {fmt_date(s['credits_date'])}</dd></div>
+  </dl>
   <p>{isp}</p>
   <div class="table-wrap">
   <table class="stack">
@@ -359,6 +386,8 @@ def build(out: Path) -> None:
     base = urlparse(c["site"]["base_url"]).path  # e.g. /adityasissodiya/
     if not base.endswith("/"):
         raise ValueError("site.base_url must end with '/'")
+
+    check_credits(c)
 
     if out.exists():
         shutil.rmtree(out)
