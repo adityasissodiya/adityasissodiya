@@ -1,0 +1,243 @@
+# Website content for https://adityasissodiya.github.io/adityasissodiya/
+#
+# This is the only file you need to edit to change what the page says.
+# See MAINTAINING.md for field descriptions and the update routine.
+#
+# Conventions
+# - Text is plain text; HTML is escaped. Leave a value as "" when it is unknown.
+# - access = "sign-in" labels a link as possibly requiring sign-in or permission.
+# - Dates use YYYY-MM-DD. Leave target_date = "" when no date has been agreed.
+# - kind = "suggested" for planning ideas, "confirmed" for agreed commitments.
+
+[site]
+title = "Aditya Sissodiya"
+description = "PhD research on access control in data ecosystems at Luleå University of Technology."
+base_url = "https://adityasissodiya.github.io/adityasissodiya/"
+# The date the content below was last checked. Change it only when you review the content,
+# not when you fix typos or styling.
+status_date = "2026-10-28"
+
+[profile]
+name = "Aditya Sissodiya"
+role = "PhD candidate in Cyber-Physical Systems"
+affiliation = "Luleå University of Technology, Sweden"
+focus = "My research concerns access control in data ecosystems: how stakeholders negotiate access policies, how those policies can be formally verified before deployment, and how they can be enforced consistently across distributed systems."
+email = "aditya.sissodiya@ltu.se"
+
+[[profile.links]]
+label = "LTU staff profile"
+url = "https://www.ltu.se/en/staff/a/aditya-sissodiya"
+
+[[profile.links]]
+label = "ORCID"
+url = "https://orcid.org/0009-0009-9695-2308"
+
+[[profile.links]]
+label = "GitHub"
+url = "https://github.com/adityasissodiya"
+
+# --------------------------------------------------------------------------------------------
+# Ongoing research. status_label is shown as visible text; status_key picks its colour
+# (preparation, exploratory, review, published, ongoing).
+
+[[research]]
+label = "rescue-ois"
+label_note = "Repository label. Manuscript title: to add."
+status_key = "preparation"
+status_label = "In preparation"
+status_detail = "Approximately halfway to submission."
+summary = "According to its repository README, the project studies command succession in rescue-service incident response over intermittent links: who may give orders when the incident commander is cut off, how disconnected devices enforce that, and how orders given in the meantime are reconciled."
+to_confirm = ["Formal manuscript title and co-authors", "Target venue (the repository README names ACM Transactions on Cyber-Physical Systems)", "Submission target date"]
+
+[[research.links]]
+label = "Manuscript (Overleaf)"
+url = "https://www.overleaf.com/project/6ae06464e4b8980fcb502764"
+access = "sign-in"
+
+[[research.links]]
+label = "Repository"
+url = "https://github.com/adityasissodiya/rescue-ois"
+
+[[research]]
+label = "Agents and access control"
+label_note = "Working label. Possible paper with Casper."
+status_key = "exploratory"
+status_label = "Exploratory"
+status_detail = "Collaboration in an exploratory phase; scope and contribution still to be defined."
+summary = "The repository README gives the working title “Task-Scoped Authorization for Local AI Agents” and describes an early-stage project on limiting what AI agents may do on a user's behalf, even when the agent is manipulated or delegates work."
+to_confirm = ["Paper title and scope", "Casper's surname and affiliation", "Agreed contribution and author list"]
+
+[[research.links]]
+label = "Repository"
+url = "https://github.com/adityasissodiya/agentsAndAccessControl"
+
+[[research]]
+label = "IEEE Internet of Things Journal submission"
+label_note = "Manuscript title: to add."
+status_key = "review"
+status_label = "Under review"
+status_detail = "Submitted to IEEE Internet of Things Journal; awaiting decision."
+summary = ""
+to_confirm = ["Formal manuscript title and co-authors", "Submission date"]
+
+[[research.links]]
+label = "Manuscript (Overleaf)"
+url = "https://www.overleaf.com/project/69b3cbba0af437217d33f8dd"
+access = "sign-in"
+
+# --------------------------------------------------------------------------------------------
+# Next-action tracker. Edit freely. Keep kind = "suggested" until an action is agreed.
+
+[[actions]]
+effort = "rescue-ois"
+next_action = "List the remaining experiments, analysis and writing; confirm the target venue and a submission date."
+kind = "suggested"
+target_date = ""
+
+[[actions]]
+effort = "Agents and access control"
+next_action = "Agree with Casper on the research question, the expected contribution and a first feasibility check."
+kind = "suggested"
+target_date = ""
+
+[[actions]]
+effort = "IEEE Internet of Things Journal submission"
+next_action = "Record the submission date; plan a response once a decision arrives."
+kind = "suggested"
+target_date = ""
+
+[[actions]]
+effort = "Current course"
+next_action = "Record the course title, code, credits and next assessment deadline."
+kind = "suggested"
+target_date = ""
+
+[[actions]]
+effort = "Individual Study Plan"
+next_action = "Record the next ISP review date and update course and thesis milestones."
+kind = "suggested"
+target_date = ""
+
+# --------------------------------------------------------------------------------------------
+# Publications (peer reviewed). Newest first.
+
+[[publications]]
+title = "Formal Verification for Preventing Misconfigured Access Policies in Kubernetes Clusters"
+authors = "Aditya Sissodiya, Eric Chiquito, Ulf Bodin, and Johan Kristiansson"
+venue = "IEEE Access"
+details = "vol. 13, pp. 141798–141813"
+year = "2025"
+type = "Journal article"
+summary = "Models Kubernetes RBAC and admission policies in first-order logic and uses an SMT solver to search for counter-examples to security invariants before policies reach the cluster."
+
+[[publications.links]]
+label = "IEEE Xplore"
+url = "https://ieeexplore.ieee.org/document/11122676"
+
+[[publications.links]]
+label = "DOI: 10.1109/ACCESS.2025.3597504"
+url = "https://doi.org/10.1109/ACCESS.2025.3597504"
+
+[[publications.links]]
+label = "Open-access PDF (DiVA)"
+url = "https://ltu.diva-portal.org/smash/get/diva2%3A1991066/FULLTEXT01.pdf"
+
+[[publications]]
+title = "Objective- and Utility-Based Negotiation for Access Control"
+authors = "Aditya Sissodiya, Ulf Bodin, and Olov Schelén"
+venue = "Proceedings of the 11th International Conference on Information Systems Security and Privacy (ICISSP 2025)"
+details = "vol. 2, pp. 493–501"
+year = "2025"
+type = "Conference paper"
+summary = "Proposes an algorithm that automates access-policy negotiation among stakeholders by quantifying their preferences with utility functions and using optimization to reach consensus."
+
+[[publications.links]]
+label = "SCITEPRESS"
+url = "https://www.scitepress.org/Link.aspx?doi=10.5220/0013130000003899"
+
+[[publications.links]]
+label = "DOI: 10.5220/0013130000003899"
+url = "https://doi.org/10.5220/0013130000003899"
+
+[[publications.links]]
+label = "PDF (SCITEPRESS)"
+url = "https://www.scitepress.org/Papers/2025/131300/131300.pdf"
+
+# --------------------------------------------------------------------------------------------
+
+[thesis]
+title = "Multi-Stakeholder Access Control in Data Ecosystems"
+author = "Aditya Sissodiya"
+institution = "Luleå University of Technology"
+year = "2026"
+type = "Licentiate thesis"
+summary = "Addresses both agreement and enforcement of access rules in multi-stakeholder data ecosystems: utility-based negotiation of a common rule set, formal verification of cloud-native access policies (shown on Kubernetes), and an outline of an offline-capable access control model for distributed ecosystems."
+supervisors = "Ulf Bodin, Eric Chiquito, and Johan Kristiansson"
+supervisors_note = "As listed in the thesis. The current doctoral supervisory team is not stated here."
+
+[[thesis.links]]
+label = "DiVA record"
+url = "https://ltu.diva-portal.org/smash/record.jsf?pid=diva2%3A2020653"
+
+[[thesis.links]]
+label = "Full-text PDF (DiVA)"
+url = "https://ltu.diva-portal.org/smash/get/diva2%3A2020653/FULLTEXT01.pdf"
+
+# --------------------------------------------------------------------------------------------
+# Courses. code and credits: leave "" until confirmed from the official course record.
+
+[[courses]]
+title = ""
+code = ""
+credits = ""
+period = ""
+status_key = "ongoing"
+status_label = "Ongoing"
+note = "The number 27166 identifies the Canvas page; it is not the academic course code."
+
+[[courses.links]]
+label = "Canvas course page"
+url = "https://canvas.ltu.se/courses/27166"
+access = "sign-in"
+
+# --------------------------------------------------------------------------------------------
+# Study planning.
+
+[study]
+isp_url = "https://ltu-isp.ltu.se/isp/studyplan/studyPlan?i=10624"
+
+[[study.milestones]]
+milestone = "Licentiate thesis"
+state = "Published"
+date = "2026"
+
+[[study.milestones]]
+milestone = "Next ISP review"
+state = "To add"
+date = ""
+
+[[study.milestones]]
+milestone = "Course credits (completed and planned)"
+state = "To add"
+date = ""
+
+[[study.milestones]]
+milestone = "Doctoral thesis and defence"
+state = "To add"
+date = ""
+
+# --------------------------------------------------------------------------------------------
+# Details still missing. Shown in a collapsed list at the bottom of the page; delete lines
+# as you fill them in.
+
+[todo]
+items = [
+  "Formal titles and co-authors of the two unpublished manuscripts",
+  "Target venue and submission date for rescue-ois",
+  "Casper's surname and affiliation, and the agreed scope of the paper",
+  "Submission date of the IEEE Internet of Things Journal manuscript",
+  "Course title, official code, credits, period and assessment deadlines",
+  "Completed and planned courses, and credit totals",
+  "Current doctoral supervisory team",
+  "Next ISP review date and doctoral thesis milestones",
+]
