@@ -97,16 +97,32 @@ def render_profile(c: dict, base: str) -> str:
 </section>"""
 
 
-def render_research(c: dict) -> str:
+def render_video(v: dict, base: str) -> str:
+    captions = ""
+    if v.get("captions"):
+        captions = f'<track kind="captions" src="{base}{e(v["captions"])}" srclang="en" label="English">'
+    return f"""
+    <figure class="video">
+      <video controls preload="none" playsinline poster="{base}{e(v['poster'])}" aria-label="{e(v['title'])}">
+        <source src="{base}{e(v['src'])}" type="video/mp4">
+        {captions}
+        <a href="{base}{e(v['src'])}">Download the video (MP4)</a>
+      </video>
+      <figcaption><strong>{e(v['title'])}.</strong> {e(v['caption'])}</figcaption>
+    </figure>"""
+
+
+def render_research(c: dict, base: str) -> str:
     cards = []
     for r in c["research"]:
+        video = render_video(r["video"], base) if r.get("video") else ""
         summary = f"<p>{e(r['summary'])}</p>" if r.get("summary") else ""
         confirm = ""
         if r.get("to_confirm"):
             items = "".join(f"<li>{e(t)}</li>" for t in r["to_confirm"])
             confirm = f'<div class="to-confirm"><p class="small-heading">To confirm</p><ul>{items}</ul></div>'
         cards.append(f"""
-  <article class="card">
+  <article class="card{' card-wide' if video else ''}">
     <div class="card-head">
       <h3>{e(r['label'])}</h3>
       {status(r['status_key'], r['status_label'])}
@@ -115,6 +131,7 @@ def render_research(c: dict) -> str:
     {f'<p class="authors">{e(r["authors"])}</p>' if r.get("authors") else ""}
     <p>{e(r['status_detail'])}</p>
     {summary}
+    {video}
     {confirm}
     {link_list(r.get('links', []))}
   </article>""")
@@ -351,7 +368,7 @@ def build(out: Path) -> None:
 
     body = "".join([
         render_profile(c, base),
-        render_research(c),
+        render_research(c, base),
         render_actions(c),
         render_publications(c),
         render_thesis(c),

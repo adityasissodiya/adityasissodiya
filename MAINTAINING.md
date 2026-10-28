@@ -43,6 +43,8 @@ python3 -m http.server -d /tmp/preview 8000   # open http://localhost:8000/adity
   then use `kind = "confirmed"` and set `target_date = "YYYY-MM-DD"`. Leave dates empty when unknown.
 - **Courses:** fill `title`, `code`, `credits`, `period` from the official course record only.
   Canvas page numbers are not course codes. Add completed courses as further `[[courses]]` blocks.
+- **Videos:** put the MP4 (H.264/AAC, under ~50 MB), a poster JPEG and a `.vtt` caption file in
+  `assets/video/`, then add a `video = { ... }` line to the research entry (see the rescue-ois entry).
 - **Status colours:** `status_key` is one of `preparation`, `exploratory`, `review`,
   `published`, `ongoing`, `todo`. The visible text comes from `status_label`.
 - **Private links:** add `access = "sign-in"` to links that need sign-in (Overleaf, Canvas, ISP).
@@ -61,11 +63,13 @@ python3 -m http.server -d /tmp/preview 8000   # open http://localhost:8000/adity
   date (3 June 2026) from the journal's submission overview, supplied by Aditya on 2026-10-28.
   The one-line summary paraphrases the submitted abstract and the public licentiate thesis.
   Co-author emails, funding details and manuscript files are deliberately not published.
+- rescue-ois manuscript title and author order: supplied by Aditya on 2026-10-28. The video
+  (`assets/video/`) and its captions were supplied by Aditya the same day; the captions are
+  converted from the supplied SRT file. Replace `research.video` paths to swap the video.
 - Thesis supervisors are as listed in the thesis; the current supervisory team is not stated.
 
 ## Maintenance checklist (information still missing)
 
-- [ ] Formal title and co-authors of the rescue-ois manuscript
 - [ ] Target venue and submission date for rescue-ois
 - [ ] Casper's surname and affiliation; agreed scope of the possible paper
 - [ ] Course title, official code, credits, period, assessment deadlines

@@ -1,0 +1,163 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.403
+Raft lets a majority replace a silent
+
+00:00:02.503 --> 00:00:05.041
+leader. At a forest fire, nobody votes.
+
+00:00:05.150 --> 00:00:09.120
+In Raft, one leader accepts every write, and followers expect its
+
+00:00:09.220 --> 00:00:12.815
+heartbeats. A write commits only when a majority stores it.
+
+00:00:12.916 --> 00:00:16.393
+Then the leader goes silent. A follower's timer expires,
+
+00:00:16.493 --> 00:00:19.651
+and the majority elects that follower. When the old
+
+00:00:19.751 --> 00:00:23.931
+leader returns, the majority's log replaces its uncommitted writes.
+
+00:00:24.033 --> 00:00:27.140
+Now take a forest fire. A commander sends orders to
+
+00:00:27.240 --> 00:00:31.352
+five crews through vehicle computers and handhelds. In the valleys,
+
+00:00:31.452 --> 00:00:34.685
+the cellular link to the regional server often fails.
+
+00:00:34.800 --> 00:00:38.364
+Command belongs to a person. The organization names
+
+00:00:38.464 --> 00:00:42.028
+a successor, usually by voice radio. Devices accept
+
+00:00:42.128 --> 00:00:45.046
+orders offline, because crews cannot wait.
+
+00:00:45.150 --> 00:00:48.848
+Run the same failover at the fire. The commander's handheld
+
+00:00:48.948 --> 00:00:52.711
+goes silent, and the deputy's timer expires. But no majority
+
+00:00:52.811 --> 00:00:55.866
+votes, and crews already acted on the old orders.
+
+00:00:55.966 --> 00:00:58.757
+Crew 2 holds 'north flank' from the commander and
+
+00:00:58.857 --> 00:01:02.001
+'village edge' from the deputy. Timestamps sort the two
+
+00:01:02.101 --> 00:01:04.656
+orders, but they cannot say which one stands.
+
+00:01:04.766 --> 00:01:08.695
+Leases, fencing tokens and epochs exist. Each lets a quorum
+
+00:01:08.795 --> 00:01:12.042
+or a reachable server pick the holder. At a fire,
+
+00:01:12.142 --> 00:01:15.866
+the organization picks, and the server link fails first.
+
+00:01:15.983 --> 00:01:18.694
+While the commander is silent, no design gives
+
+00:01:18.794 --> 00:01:22.054
+all three: the commander records, command moves without
+
+00:01:22.154 --> 00:01:24.438
+them, and one device accepts at a time.
+
+00:01:24.550 --> 00:01:28.354
+So succession is a policy choice. Keep any two, and pay for the
+
+00:01:28.454 --> 00:01:32.940
+third: two commanders, a commander who stops early, or a deputy who waits.
+
+00:01:33.050 --> 00:01:35.937
+We separate a person's right to command from a
+
+00:01:36.037 --> 00:01:39.769
+device's right to write. Authority comes from signed grants
+
+00:01:39.869 --> 00:01:43.211
+and rules, fixed in advance; devices only enforce it.
+
+00:01:43.316 --> 00:01:47.645
+Every order shows one of four statuses: authoritative, provisional,
+
+00:01:47.745 --> 00:01:51.082
+residual, or in doubt. Residual means the person who
+
+00:01:51.182 --> 00:01:54.651
+gave it lacked command; it stays, labelled for review.
+
+00:01:54.766 --> 00:01:57.250
+A flip is the clearest cost: a crew acts
+
+00:01:57.350 --> 00:02:00.609
+on a provisional order, and it later turns residual.
+
+00:02:00.709 --> 00:02:03.968
+Policies differ widely in how many flips they cause.
+
+00:02:04.083 --> 00:02:08.310
+We compare six succession policies across three partition
+
+00:02:08.410 --> 00:02:11.499
+cases and three states of the commander. A
+
+00:02:11.599 --> 00:02:14.991
+truth oracle checks 8,950 simulated incidents.
+
+00:02:15.100 --> 00:02:18.799
+First, our prototype's server lease costs most when nothing is
+
+00:02:18.899 --> 00:02:22.783
+wrong. The backhaul drops, the commander stays reachable over the
+
+00:02:22.883 --> 00:02:26.093
+mesh, yet nobody can record for over eighteen minutes.
+
+00:02:26.200 --> 00:02:29.631
+Second, a vehicle can relay an old heartbeat from the
+
+00:02:29.731 --> 00:02:33.896
+deputy and wake the commander's stopped device. Both then record
+
+00:02:33.996 --> 00:02:37.428
+for 107 seconds. An acknowledged timeout prevents it.
+
+00:02:37.533 --> 00:02:40.874
+Third, the duty chief signs a takeover while the scene
+
+00:02:40.974 --> 00:02:44.188
+has no link to the centre. The commander, who cannot
+
+00:02:44.288 --> 00:02:47.374
+know, gives 17 more orders, and crews act on them.
+
+00:02:47.483 --> 00:02:51.741
+If the takeover counts from its signature, all 17 turn residual:
+
+00:02:51.841 --> 00:02:55.895
+51 flips. If it counts from the deputy's acceptance, none do.
+
+00:02:56.000 --> 00:02:59.612
+Three steps remain: model checks of both results, a prototype
+
+00:02:59.712 --> 00:03:03.324
+on vehicle computers, and a walkthrough with rescue officers.
+
+00:03:03.433 --> 00:03:05.615
+A network can show who wrote an order.
+
+00:03:05.715 --> 00:03:08.197
+Only the organization can say who commands.

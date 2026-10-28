@@ -44,13 +44,16 @@ url = "https://github.com/adityasissodiya"
 # (preparation, exploratory, review, published, ongoing).
 
 [[research]]
-label = "rescue-ois"
-label_note = "Repository label. Manuscript title: to add."
+label = "Command Succession under Intermittent Connectivity: Enforcing and Reconciling Human Authority in Incident Response"
+label_note = "Repository: rescue-ois."
+authors = "Aditya Sissodiya, Eric Chiquito, Johan Kristiansson, and Ulf Bodin"
 status_key = "preparation"
 status_label = "In preparation"
 status_detail = "Approximately halfway to submission."
-summary = "According to its repository README, the project studies command succession in rescue-service incident response over intermittent links: who may give orders when the incident commander is cut off, how disconnected devices enforce that, and how orders given in the meantime are reconciled."
-to_confirm = ["Formal manuscript title and co-authors", "Target venue (the repository README names ACM Transactions on Cyber-Physical Systems)", "Submission target date"]
+summary = "Studies command succession in rescue-service incident response over intermittent links: who may give orders when the incident commander is cut off, how disconnected devices enforce that, and how orders given in the meantime are reconciled."
+to_confirm = ["Target venue (the repository README and the video name ACM Transactions on Cyber-Physical Systems)", "Submission target date"]
+# Optional video shown inside the card. Paths are relative to the site root.
+video = { src = "assets/video/command-succession.mp4", poster = "assets/video/command-succession-poster.jpg", captions = "assets/video/command-succession.en.vtt", title = "Video: command succession at a forest fire", caption = "A narrated three-minute overview of the problem and the approach (English captions available). Results shown are from the working draft and may change before submission.", duration = "PT3M10S" }
 
 [[research.links]]
 label = "Manuscript (Overleaf)"
@@ -236,7 +239,6 @@ date = ""
 
 [todo]
 items = [
-  "Formal title and co-authors of the rescue-ois manuscript",
   "Target venue and submission date for rescue-ois",
   "Casper's surname and affiliation, and the agreed scope of the paper",
   "Course title, official code, credits, period and assessment deadlines",

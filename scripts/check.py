@@ -40,7 +40,7 @@ class Collector(HTMLParser):
         a = dict(attrs)
         if "id" in a:
             self.ids.add(a["id"])
-        for key in ("href", "src"):
+        for key in ("href", "src", "poster"):
             if a.get(key):
                 self.refs.append(a[key])
 
@@ -127,7 +127,7 @@ def main() -> int:
         if not path.startswith(base):
             errors.append(f"local link outside base path {base}: {path}")
             continue
-        status, _ = fetch(origin + path)
+        status, _ = fetch(origin + path, "HEAD")
         print(f"  local {status} {path}")
         if status != 200:
             errors.append(f"local resource not served: {path} ({status})")
