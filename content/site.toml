@@ -51,9 +51,7 @@ status_key = "preparation"
 status_label = "In preparation"
 status_detail = "Approximately halfway to submission."
 summary = "Studies command succession in rescue-service incident response over intermittent links: who may give orders when the incident commander is cut off, how disconnected devices enforce that, and how orders given in the meantime are reconciled."
-to_confirm = ["Target venue (the repository README and the video name ACM Transactions on Cyber-Physical Systems)", "Submission target date"]
-# Optional video shown inside the card. Paths are relative to the site root.
-video = { src = "assets/video/command-succession.mp4", poster = "assets/video/command-succession-poster.jpg", captions = "assets/video/command-succession.en.vtt", title = "Video: command succession at a forest fire", caption = "A narrated three-minute overview of the problem and the approach (English captions available). Results shown are from the working draft and may change before submission.", duration = "PT3M10S" }
+to_confirm = ["Target venue (the repository README names ACM Transactions on Cyber-Physical Systems)", "Submission target date"]
 
 [[research.links]]
 label = "Manuscript (Overleaf)"

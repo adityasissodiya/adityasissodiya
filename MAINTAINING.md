@@ -45,7 +45,9 @@ python3 -m http.server -d /tmp/preview 8000   # open http://localhost:8000/adity
   course codes. When a course is completed, set `status_key = "completed"` and update the
   credit totals in `[study]` from Ladok; the build checks that the numbers add up.
 - **Videos:** put the MP4 (H.264/AAC, under ~50 MB), a poster JPEG and a `.vtt` caption file in
-  `assets/video/`, then add a `video = { ... }` line to the research entry (see the rescue-ois entry).
+  `assets/video/`, then add this line to the research entry, above its `[[research.links]]`:
+  `video = { src = "assets/video/x.mp4", poster = "assets/video/x-poster.jpg", captions = "assets/video/x.en.vtt", title = "...", caption = "..." }`.
+  Everything in `assets/` is published, whether or not the page links to it.
 - **Background photo:** set in the "Photo backdrop" block of `assets/style.css`, which also holds
   the part of the photo kept in view on wide screens (`50% 35%`). To replace the photo, run this
   from the repository root (needs Pillow). It overwrites both sizes and drops the metadata
@@ -83,9 +85,7 @@ python3 -m http.server -d /tmp/preview 8000   # open http://localhost:8000/adity
   date (3 June 2026) from the journal's submission overview, supplied by Aditya on 2026-10-28.
   The one-line summary paraphrases the submitted abstract and the public licentiate thesis.
   Co-author emails, funding details and manuscript files are deliberately not published.
-- rescue-ois manuscript title and author order: supplied by Aditya on 2026-10-28. The video
-  (`assets/video/`) and its captions were supplied by Aditya the same day; the captions are
-  converted from the supplied SRT file. Replace `research.video` paths to swap the video.
+- rescue-ois manuscript title and author order: supplied by Aditya on 2026-10-28.
 - Task-Scoped Authorization: working title, Casper Lundberg's LTU profile and the Overleaf
   project supplied by Aditya on 2026-10-28. The Overleaf share token in the supplied link was
   deliberately left out; the page links the plain project URL, which requires sign-in.
