@@ -56,6 +56,18 @@ python3 -m http.server -d /tmp/preview 8000   # open http://localhost:8000/adity
   `assets/video/`, then add this line to the research entry, above its `[[research.links]]`:
   `video = { src = "assets/video/x.mp4", poster = "assets/video/x-poster.jpg", captions = "assets/video/x.en.vtt", title = "...", caption = "..." }`.
   Everything in `assets/` is published, whether or not the page links to it.
+- **Landing video:** `[profile.video]` in `content/site.toml` shows a video under the profile text.
+  It takes the same fields as above, plus an optional `transcript`. The current video has its
+  captions burned into the picture, so it has no `.vtt`. If the narration changes, change the
+  transcript to match. To replace the file, copy the new master without re-encoding. This keeps the
+  picture and sound as they are, drops the metadata, and lets playback start during the download:
+
+  ```sh
+  ffmpeg -i master.mp4 -map 0 -map_metadata -1 -map_chapters -1 -c copy -movflags +faststart assets/video/site-landing.mp4
+  ```
+
+  The poster is the frame at 3.3 s, with the caption band below it (from y = 868 at 1080p) painted in
+  the background colour, so that it does not show half a sentence.
 - **Background photo:** set in the "Photo backdrop" block of `assets/style.css`, which also holds
   the part of the photo kept in view on wide screens (`50% 35%`). To replace the photo, run this
   from the repository root (needs Pillow). It overwrites both sizes and drops the metadata

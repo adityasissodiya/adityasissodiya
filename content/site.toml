@@ -39,6 +39,15 @@ url = "https://orcid.org/0009-0009-9695-2308"
 label = "GitHub"
 url = "https://github.com/adityasissodiya"
 
+# The landing video, under the profile text. Its captions are burned into the picture, so it has
+# no captions file; the transcript is its text version. See "Landing video" in MAINTAINING.md.
+[profile.video]
+src = "assets/video/site-landing.mp4"
+poster = "assets/video/site-landing-poster.jpg"
+title = "Who can access what?"
+caption = "A 40-second introduction to my research. The factory is an illustrative example, and the narrator is a synthetic voice."
+transcript = "Three companies share one machine's data. Who can access what? A factory, a supplier and a maintenance firm must each agree. So they negotiate. Software scores what each wants and looks for a rule all three accept. But agreed does not mean safe. So verify it. Before it goes live, software searches for a way to break it. Then enforce it: now the computers must agree too. Some go offline and fall behind, but all must reach the same answer. Otherwise, one says yes and another says no. Negotiate the rule. Verify it. Enforce it the same way everywhere. That is access control in data ecosystems: who can access what, and how to keep it that way."
+
 # --------------------------------------------------------------------------------------------
 # Ongoing research. status_label is shown as visible text; status_key picks its colour
 # (preparation, exploratory, review, published, ongoing).

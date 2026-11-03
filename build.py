@@ -90,8 +90,9 @@ def render_profile(c: dict, base: str) -> str:
             f'<img class="portrait" src="{base}{e(p['photo'])}" alt="{e(p.get('photo_alt', ''))}"'
             ' width="480" height="480">'
         )
+    video = render_video(p["video"], base) if p.get("video") else ""
     return f"""
-<section class="profile" aria-labelledby="name">
+<section class="profile{' has-video' if video else ''}" aria-labelledby="name">
   {photo}
   <div class="profile-text">
   <h1 id="name">{e(p['name'])}</h1>
@@ -100,6 +101,7 @@ def render_profile(c: dict, base: str) -> str:
   {link_list(links, 'profile-links')}
   <p class="updated">Content status as of <time datetime="{e(c['site']['status_date'])}">{fmt_date(c['site']['status_date'])}</time></p>
   </div>
+  {video}
 </section>"""
 
 
@@ -107,14 +109,20 @@ def render_video(v: dict, base: str) -> str:
     captions = ""
     if v.get("captions"):
         captions = f'<track kind="captions" src="{base}{e(v["captions"])}" srclang="en" label="English">'
+    transcript = ""
+    if v.get("transcript"):
+        transcript = f'<details><summary>Transcript</summary><p>{e(v["transcript"])}</p></details>'
+    heading = v["title"] if v["title"][-1:] in "?!." else v["title"] + "."
+    # preload="metadata", not "none": with "none", clicking the poster did not start the video in
+    # Chrome (tested on 156), and the controls showed 0:00 instead of the length.
     return f"""
     <figure class="video">
-      <video controls preload="none" playsinline poster="{base}{e(v['poster'])}" aria-label="{e(v['title'])}">
+      <video controls preload="metadata" playsinline poster="{base}{e(v['poster'])}" aria-label="{e(v['title'])}">
         <source src="{base}{e(v['src'])}" type="video/mp4">
         {captions}
         <a href="{base}{e(v['src'])}">Download the video (MP4)</a>
       </video>
-      <figcaption><strong>{e(v['title'])}.</strong> {e(v['caption'])}</figcaption>
+      <figcaption><strong>{e(heading)}</strong> {e(v['caption'])}{transcript}</figcaption>
     </figure>"""
 
 

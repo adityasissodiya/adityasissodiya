@@ -216,6 +216,20 @@ th .unknown::before { content: ""; }
 }
 .video figcaption { color: var(--muted); font-size: .92rem; margin-top: .5rem; max-width: var(--measure); }
 .video figcaption strong { color: var(--text); font-weight: 600; }
+.video details { margin-top: .35rem; }
+.video summary { width: fit-content; color: var(--accent); cursor: pointer; }
+.video details p { margin: .35rem 0 0; }
+/* The landing video takes its own row in the profile's flex layout. */
+.profile .video { flex: 1 1 100%; max-width: var(--measure); margin: 0; }
+/* On a phone the paragraph is long, so the video comes before it and stays on the first screen. */
+@media (max-width: 43.99rem) {
+  .has-video { row-gap: 0; }
+  .has-video .portrait { margin-bottom: 1.5rem; }
+  .has-video .profile-text { display: contents; }
+  .has-video .profile-text > * { flex: 1 1 100%; order: 2; }
+  .has-video .profile-text > :is(h1, .role) { order: 1; }
+  .has-video .video { order: 1; margin-bottom: 1.25rem; }
+}
 .to-confirm ul { margin: 0; padding-left: 1.1rem; color: var(--muted); }
 
 /* Publications */
@@ -323,6 +337,7 @@ abbr[title] { text-decoration: underline dotted; text-underline-offset: .15em; c
     /* 38rem is roughly the header and profile plus a heading's height, so the next section's
        heading stays in view at the bottom of the first screen on any window height. */
     .profile { margin-bottom: clamp(3.5rem, 100vh - 38rem, 24rem); }
+    .profile.has-video { margin-bottom: clamp(3.5rem, 100vh - 68rem, 24rem); }
   }
 
   .todo { max-width: none; }
@@ -336,7 +351,7 @@ abbr[title] { text-decoration: underline dotted; text-underline-offset: .15em; c
 }
 
 @media print {
-  .site-header nav, .skip, .todo { display: none; }
+  .site-header nav, .skip, .todo, .profile .video { display: none; }
   .site-header { position: static; }
   a { color: inherit; }
 }
