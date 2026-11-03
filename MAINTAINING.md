@@ -14,6 +14,7 @@ https://github.com/adityasissodiya. Keep it short; website documentation belongs
 | `assets/style.css` | Styles (light and dark, responsive). |
 | `scripts/check.py` | Checks anchors, that every content URL is on the page, and that assets load under `/adityasissodiya/`. `--external` also requests every external link. |
 | `.github/workflows/pages.yml` | On every push to `main`: build, check, and publish `_site/` to the `gh-pages` branch. |
+| `thesis-direction-notes.md` | Working notes on the thesis direction. In this repository but not on the website: only `_site/` is published, and `build.py` copies only `assets/` into it. Keep it out of `assets/`. |
 
 GitHub Pages serves the `gh-pages` branch (Settings → Pages → Deploy from a branch →
 `gh-pages` / root). Do not edit `gh-pages` by hand; it is overwritten on each deploy.
