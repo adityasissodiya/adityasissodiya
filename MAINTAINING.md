@@ -50,6 +50,8 @@ python3 -m http.server -d /tmp/preview 8000   # open http://localhost:8000/adity
   course codes. Use `code = "None"` for a course that has no code; `""` shows "To add". When a
   course is completed, set `status_key = "completed"` and update the
   credit totals in `[study]` from Ladok; the build checks that the numbers add up.
+  Planned courses come from the ISP, with `status_key = "todo"` and `status_label = "Planned"`; an
+  empty `code` on one shows a dash. Update `study.planned_note` when you recheck them.
 - **Videos:** put the MP4 (H.264/AAC, under ~50 MB), a poster JPEG and a `.vtt` caption file in
   `assets/video/`, then add this line to the research entry, above its `[[research.links]]`:
   `video = { src = "assets/video/x.mp4", poster = "assets/video/x-poster.jpg", captions = "assets/video/x.en.vtt", title = "...", caption = "..." }`.
@@ -72,16 +74,18 @@ python3 -m http.server -d /tmp/preview 8000   # open http://localhost:8000/adity
   EOF
   ```
 - **Status colours:** `status_key` is one of `preparation`, `exploratory`, `review`,
-  `published`, `ongoing`, `todo`. The visible text comes from `status_label`.
+  `published`, `ongoing`, `completed`, `todo`. The visible text comes from `status_label`.
 - **Never publish Overleaf share links** (`.../share#...`, `overleaf.com/read/...`): they grant access
   to anyone holding them. Use the plain `https://www.overleaf.com/project/<id>` address.
 - **Private links:** add `access = "sign-in"` to links that need sign-in (Overleaf, Canvas, ISP).
   Listing a link does not grant access to it, but it does make the address public.
+- **The ISP document:** never add the PDF, or text copied from it, to this repository. It holds
+  personal details such as a personal identity number. Copy single facts into `content/site.toml`.
 
 ## Provenance of the current content (as of 28 October 2026)
 
 - Statuses of ongoing work, the Casper collaboration and all working links: supplied by Aditya
-  on 2026-10-28. The contents of Overleaf, Canvas and the ISP were not inspected.
+  on 2026-10-28. The contents of Overleaf, Canvas and the ISP were not inspected for these.
 - Project summaries for rescue-ois and Agents and access control: paraphrased from each public
   repository's README (checked 2026-10-28). The target venue and working title quoted there are
   marked "to confirm" on the page.
@@ -101,7 +105,14 @@ python3 -m http.server -d /tmp/preview 8000   # open http://localhost:8000/adity
 - Thesis direction: wording supplied by Aditya on 2026-11-03.
 - Current course (Programming for PhD students): title, 7.5 hp and that it has no course code
   supplied by Aditya on 2026-11-03; not checked against Ladok.
-- Thesis supervisors are as listed in the thesis; the current supervisory team is not stated.
+- Thesis supervisors are as listed in the thesis. Current doctoral supervisors, the course code
+  D7042E, planned courses and the Spring 2028 degree target: ISP 2025/100:2, established 2026-10-16,
+  supplied by Aditya on 2026-11-03. Aditya confirmed the target and which courses remain planned the
+  same day. D7042E is from the ISP's planned-course table and matches LTU's course catalogue.
+- Course code D7043E: LTU's course catalogue, confirmed by Aditya on 2026-11-03. The ISP's table of
+  completed courses shows no code for either D7042E or D7043E.
+- The self-study course title, "Agentic AI Security, Identity, and Access Control", is from its
+  repository README; the ISP lists that course only by its repository address.
 - Background photo (`assets/aurora-*.webp`): supplied by Aditya on 2026-11-03 as `IMG_0659.JPG`;
   resized to WebP with its metadata removed.
 
@@ -112,8 +123,6 @@ python3 -m http.server -d /tmp/preview 8000   # open http://localhost:8000/adity
 - [ ] Doctoral thesis title and research questions
 - [ ] Which ongoing papers will form part of the doctoral thesis
 - [ ] Programming for PhD students: period, assessment deadlines
-- [ ] Codes for “IoT-based industrial automation and digitalization” and “Advanced Data Mining”
-- [ ] Planned courses; course credits required for the doctorate
-- [ ] Current doctoral supervisory team
-- [ ] Next ISP review date; doctoral thesis milestones
+- [ ] Course credits required for the doctorate
+- [ ] Next ISP review date
 - [ ] Optional: code/data links for published papers, Google Scholar, CV

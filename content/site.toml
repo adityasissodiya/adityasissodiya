@@ -218,7 +218,7 @@ year = "2026"
 type = "Licentiate thesis"
 summary = "Addresses both agreement and enforcement of access rules in multi-stakeholder data ecosystems: utility-based negotiation of a common rule set, formal verification of cloud-native access policies (shown on Kubernetes), and an outline of an offline-capable access control model for distributed ecosystems."
 supervisors = "Ulf Bodin, Eric Chiquito, and Johan Kristiansson"
-supervisors_note = "As listed in the thesis. The current doctoral supervisory team is not stated here."
+supervisors_note = "As listed in the thesis. They are also the current doctoral supervisors, with Ulf Bodin as principal supervisor."
 
 [[thesis.links]]
 label = "DiVA record"
@@ -230,7 +230,8 @@ url = "https://ltu.diva-portal.org/smash/get/diva2%3A2020653/FULLTEXT01.pdf"
 
 # --------------------------------------------------------------------------------------------
 # Courses, as named in Ladok. Fill code and credits from Ladok only; leave "" when unknown.
-# status_key: "ongoing" or "completed".
+# status_key: "ongoing", "completed", or "todo" for a planned course (status_label = "Planned").
+# Planned courses come from the ISP; an empty code on one shows a dash instead of "To add".
 
 [[courses]]
 title = "Programming for PhD students"
@@ -253,14 +254,14 @@ status_label = "Completed"
 
 [[courses]]
 title = "IoT-based industrial automation and digitalization"
-code = ""
+code = "D7042E" # From the ISP's planned-course table, and LTU's course catalogue agrees; Ladok's completed-course table shows no code.
 credits = "7.5"
 status_key = "completed"
 status_label = "Completed"
 
 [[courses]]
 title = "Advanced Data Mining"
-code = ""
+code = "D7043E" # From LTU's course catalogue, confirmed by Aditya on 2026-11-03; Ladok's completed-course table shows no code.
 credits = "7.5"
 status_key = "completed"
 status_label = "Completed"
@@ -279,6 +280,59 @@ credits = "4.5"
 status_key = "completed"
 status_label = "Completed"
 
+[[courses]]
+title = "TCS Introduction Course at SRT"
+code = ""
+credits = "1.5"
+status_key = "todo"
+status_label = "Planned"
+
+[[courses]]
+title = "Computer system security"
+code = ""
+credits = "7.5"
+status_key = "todo"
+status_label = "Planned"
+
+[[courses]]
+title = "Digital Product Passports"
+code = ""
+credits = "3.0"
+status_key = "todo"
+status_label = "Planned"
+
+[[courses]]
+title = "Neural networks and learning machines"
+code = ""
+credits = "7.5"
+status_key = "todo"
+status_label = "Planned"
+
+[[courses]]
+title = "Performance evaluation"
+code = ""
+credits = "7.5"
+status_key = "todo"
+status_label = "Planned"
+
+[[courses]]
+title = "Academic paper review"
+code = ""
+credits = "2.5"
+status_key = "todo"
+status_label = "Planned"
+
+[[courses]]
+title = "Agentic AI Security, Identity, and Access Control (self-study)"
+code = ""
+credits = "7.5"
+status_key = "todo"
+status_label = "Planned"
+
+[[courses.links]]
+label = "Repository"
+url = "https://github.com/adityasissodiya/self-ml-course"
+
 # --------------------------------------------------------------------------------------------
 # Study planning. Credit figures are copied from Ladok; build.py checks that course_credits
 # equals the sum of the completed courses above.
@@ -293,6 +347,7 @@ thesis_credits = "90.0"
 course_credits = "31.5"
 credits_source = "Ladok"
 credits_date = "2026-10-28"
+planned_note = "Planned courses are from the Individual Study Plan and were last checked on 3 November 2026."
 
 [[study.milestones]]
 milestone = "Licentiate (SRT002L)"
@@ -315,9 +370,9 @@ state = "To add"
 date = ""
 
 [[study.milestones]]
-milestone = "Doctoral thesis and defence"
-state = "To add"
-date = ""
+milestone = "Doctoral degree (thesis and defence)"
+state = "Planned"
+date = "Spring 2028"
 
 # --------------------------------------------------------------------------------------------
 # Details still missing. Shown in a collapsed list at the bottom of the page; delete lines
@@ -330,8 +385,6 @@ items = [
   "Doctoral thesis title and research questions",
   "Which ongoing papers will form part of the doctoral thesis",
   "Programming for PhD students: period and assessment deadlines",
-  "Course codes for IoT-based industrial automation and digitalization, and Advanced Data Mining",
-  "Planned courses, and the course credits required for the doctorate",
-  "Current doctoral supervisory team",
-  "Next ISP review date and doctoral thesis milestones",
+  "Course credits required for the doctorate",
+  "Next ISP review date",
 ]

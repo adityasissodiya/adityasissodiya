@@ -267,10 +267,16 @@ def render_courses(c: dict) -> str:
             f'<td data-label="Workspace">{workspace}</td>' if workspace
             else '<td data-label="Workspace" class="empty"><span class="meta">—</span></td>'
         )
+        # A planned course does not need its code yet, so an unknown one shows a dash, not "To add".
+        code_cell = (
+            '<td data-label="Code" class="empty"><span class="meta">—</span></td>'
+            if k["status_key"] == "todo" and not k["code"]
+            else f'<td data-label="Code">{value_or_unknown(k["code"])}</td>'
+        )
         rows.append(f"""
       <tr>
         <th scope="row" data-label="Course">{title}</th>
-        <td data-label="Code">{value_or_unknown(k['code'])}</td>
+        {code_cell}
         <td data-label="Credits">{hp(k['credits']) if k['credits'] else unknown()}</td>
         <td data-label="Status">{status(k['status_key'], k['status_label'])}</td>
         {ws_cell}
@@ -287,7 +293,7 @@ def render_courses(c: dict) -> str:
     </tbody>
   </table>
   </div>
-  <ul class="notes">{notes}<li>Completed courses as recorded in {e(s['credits_source'])} on {fmt_date(s['credits_date'])}. Planned courses: to add.</li></ul>
+  <ul class="notes">{notes}<li>Completed courses as recorded in {e(s['credits_source'])} on {fmt_date(s['credits_date'])}. {e(s['planned_note'])}</li></ul>
 </section>"""
 
 
