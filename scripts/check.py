@@ -123,6 +123,10 @@ def main() -> int:
     origin = f"http://127.0.0.1:{httpd.server_address[1]}"
     local = {r.split("#")[0] for r in col.refs if r.startswith("/") or not re.match(r"^[a-z]+:", r)}
     local = {r for r in local if r} | {base, base + "404.html"}
+    # Files the stylesheet refers to, e.g. the background photo; relative to assets/style.css.
+    css = (SITE / "assets" / "style.css").read_text(encoding="utf-8")
+    css_refs = re.findall(r"""url\(\s*["']?([^"')]+)""", css)
+    local |= {f"{base}assets/{r}" for r in css_refs if not re.match(r"^[a-z]+:", r)}
     for path in sorted(local):
         if not path.startswith(base):
             errors.append(f"local link outside base path {base}: {path}")

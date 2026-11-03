@@ -46,6 +46,23 @@ python3 -m http.server -d /tmp/preview 8000   # open http://localhost:8000/adity
   credit totals in `[study]` from Ladok; the build checks that the numbers add up.
 - **Videos:** put the MP4 (H.264/AAC, under ~50 MB), a poster JPEG and a `.vtt` caption file in
   `assets/video/`, then add a `video = { ... }` line to the research entry (see the rescue-ois entry).
+- **Background photo:** set in the "Photo backdrop" block of `assets/style.css`, which also holds
+  the part of the photo kept in view on wide screens (`50% 35%`). To replace the photo, run this
+  from the repository root (needs Pillow). It overwrites both sizes and drops the metadata
+  (date, device, any location) that should not be published:
+
+  ```sh
+  python3 - photo.jpg <<'EOF'
+  import sys
+  from PIL import Image, ImageOps
+  im = ImageOps.exif_transpose(Image.open(sys.argv[1]))
+  icc = im.info.get("icc_profile")
+  im = im.convert("RGB")
+  for w in (1500, 2400):
+      im.resize((w, w * im.height // im.width), Image.LANCZOS).save(
+          f"assets/aurora-{w}.webp", quality=75, method=6, icc_profile=icc)
+  EOF
+  ```
 - **Status colours:** `status_key` is one of `preparation`, `exploratory`, `review`,
   `published`, `ongoing`, `todo`. The visible text comes from `status_label`.
 - **Never publish Overleaf share links** (`.../share#...`, `overleaf.com/read/...`): they grant access
@@ -76,6 +93,8 @@ python3 -m http.server -d /tmp/preview 8000   # open http://localhost:8000/adity
   supplied by Aditya on 2026-10-28. No grades are published. `build.py` fails if the completed
   courses do not add up to `study.course_credits`, or thesis + courses to `study.total_credits`.
 - Thesis supervisors are as listed in the thesis; the current supervisory team is not stated.
+- Background photo (`assets/aurora-*.webp`): supplied by Aditya on 2026-11-03 as `IMG_0659.JPG`;
+  resized to WebP with its metadata removed.
 
 ## Maintenance checklist (information still missing)
 

@@ -2,6 +2,7 @@
 
 :root {
   --bg: #fbfaf7;
+  --panel: rgb(251 250 247 / .92); /* --bg, translucent; see "Photo backdrop" below */
   --surface: #ffffff;
   --text: #1d2125;
   --muted: #545b63;
@@ -26,6 +27,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #15181b;
+    --panel: rgb(21 24 27 / .84);
     --surface: #1c2024;
     --text: #e6e3dd;
     --muted: #a9aeb4;
@@ -93,7 +95,7 @@ main:focus { outline: none; }
 /* Header */
 .site-header {
   position: sticky; top: 0; z-index: 5;
-  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  background: var(--panel);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--border);
 }
@@ -262,6 +264,69 @@ abbr[title] { text-decoration: underline dotted; text-underline-offset: .15em; c
 
 .site-footer { border-top: 1px solid var(--border); color: var(--muted); font-size: .92rem; padding: 1.5rem 0 2.5rem; }
 .site-footer p { margin: 0; }
+
+/* Photo backdrop (screen only; print keeps the plain page).
+   The photo stays fixed behind the page and each section floats over it on a panel.
+   Panel opacities are chosen so all text passes WCAG AA over any pixel of any photo;
+   re-check contrast before lowering them. */
+@media screen {
+  body {
+    display: flex; flex-direction: column; min-height: 100vh; /* footer stays low on short pages */
+    background: #12120d; /* the photo's sky tone, shown until it loads */
+  }
+  body::before {
+    content: ""; position: fixed; top: 0; left: 0; z-index: -1;
+    width: 100%; height: 100vh; height: 100lvh; /* lvh: no jump when mobile toolbars collapse */
+    background: url(aurora-1500.webp) 50% 35% / cover no-repeat;
+  }
+  @media (min-width: 48rem) {
+    body::before { background-image: url(aurora-2400.webp); }
+  }
+
+  main.wrap { flex: 1 0 auto; width: 100%; padding-bottom: 3.5rem; }
+  main > section, .profile {
+    padding: 1.25rem 1rem;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  @media (min-width: 40.01rem) {
+    main > section, .profile { padding: 2rem; }
+  }
+  @media (max-width: 40rem) {
+    main.wrap { padding-inline: .625rem; }
+  }
+
+  /* The profile is dark glass in both themes, and leaves a window onto the aurora below it. */
+  .profile {
+    --text: #f4f2ec;
+    --muted: #cfd4d9;
+    --accent: #a9cdf5;
+    --accent-hover: #d3e6fb;
+    --focus: #ffb25c;
+    --surface: #1c2024;
+    --border: rgb(255 255 255 / .22);
+    --panel: rgb(8 11 14 / .72);
+    color: var(--text);
+    backdrop-filter: blur(10px);
+    margin-top: 2.5rem;
+    margin-bottom: 40vh;
+  }
+  @media (min-width: 44rem) {
+    /* 38rem is roughly the header and profile plus a heading's height, so the next section's
+       heading stays in view at the bottom of the first screen on any window height. */
+    .profile { margin-bottom: clamp(3.5rem, 100vh - 38rem, 24rem); }
+  }
+
+  .todo { max-width: none; }
+  .site-footer { background: var(--panel); }
+
+  /* Respect requests for less see-through UI: keep the photo, make the panels solid. */
+  @media (prefers-contrast: more), (prefers-reduced-transparency: reduce) {
+    :root { --panel: var(--bg); }
+    .profile { --panel: #0b0e11; }
+  }
+}
 
 @media print {
   .site-header nav, .skip, .todo { display: none; }
