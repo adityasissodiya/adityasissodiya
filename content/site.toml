@@ -121,8 +121,8 @@ kind = "suggested"
 target_date = ""
 
 [[actions]]
-effort = "Current course"
-next_action = "Record the course title, code, credits and next assessment deadline."
+effort = "Programming for PhD students"
+next_action = "Record the next assessment deadline."
 kind = "suggested"
 target_date = ""
 
@@ -202,12 +202,11 @@ url = "https://ltu.diva-portal.org/smash/get/diva2%3A2020653/FULLTEXT01.pdf"
 # status_key: "ongoing" or "completed".
 
 [[courses]]
-title = ""
-code = ""
-credits = ""
+title = "Programming for PhD students"
+code = "None" # This course has no code; "" would show "To add".
+credits = "7.5"
 status_key = "ongoing"
 status_label = "Ongoing"
-note = "The number 27166 identifies the Canvas page; it is not the academic course code."
 
 [[courses.links]]
 label = "Canvas course page"
@@ -297,7 +296,7 @@ date = ""
 items = [
   "Target venue and submission date for rescue-ois",
   "Agreed scope and author list of the Task-Scoped Authorization paper",
-  "Current course: title, official code, credits, period and assessment deadlines",
+  "Programming for PhD students: period and assessment deadlines",
   "Course codes for IoT-based industrial automation and digitalization, and Advanced Data Mining",
   "Planned courses, and the course credits required for the doctorate",
   "Current doctoral supervisory team",
