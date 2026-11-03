@@ -39,6 +39,10 @@ python3 -m http.server -d /tmp/preview 8000   # open http://localhost:8000/adity
   block (newest first). Keep code and preprint links.
 - **New manuscript title:** replace `label`, update `label_note`, and remove the item from
   `to_confirm` and from `[todo]`.
+- **Thesis direction:** edit `[direction]`, and set `as_of` when the framing changes (it is separate
+  from `site.status_date`). Each `paper` must match the start of a `[[research]]` label or a
+  `[[publications]]` title: its status label comes from that entry, and the build fails if there is
+  no match. Its `to_confirm` items are repeated in `[todo]`.
 - **Next actions:** edit `[[actions]]`. Keep `kind = "suggested"` until the action is agreed;
   then use `kind = "confirmed"` and set `target_date = "YYYY-MM-DD"`. Leave dates empty when unknown.
 - **Courses:** fill `title`, `code`, `credits` from Ladok only. Canvas page numbers are not
@@ -93,6 +97,7 @@ python3 -m http.server -d /tmp/preview 8000   # open http://localhost:8000/adity
 - Completed courses, credits, programme (SRTCYBFY, 240 hp) and registrations: Ladok, as
   supplied by Aditya on 2026-10-28. No grades are published. `build.py` fails if the completed
   courses do not add up to `study.course_credits`, or thesis + courses to `study.total_credits`.
+- Thesis direction: wording supplied by Aditya on 2026-11-03.
 - Current course (Programming for PhD students): title, 7.5 hp and that it has no course code
   supplied by Aditya on 2026-11-03; not checked against Ladok.
 - Thesis supervisors are as listed in the thesis; the current supervisory team is not stated.
@@ -103,6 +108,8 @@ python3 -m http.server -d /tmp/preview 8000   # open http://localhost:8000/adity
 
 - [ ] Target venue and submission date for rescue-ois
 - [ ] Agreed scope and author list of the Task-Scoped Authorization paper (with Casper Lundberg)
+- [ ] Doctoral thesis title and research questions
+- [ ] Which ongoing papers will form part of the doctoral thesis
 - [ ] Programming for PhD students: period, assessment deadlines
 - [ ] Codes for “IoT-based industrial automation and digitalization” and “Advanced Data Mining”
 - [ ] Planned courses; course credits required for the doctorate

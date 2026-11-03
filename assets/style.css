@@ -49,6 +49,8 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 html { scroll-padding-top: 5rem; }
+/* The sticky header wraps to several rows on tablet-sized screens. */
+@media (min-width: 40.01rem) and (max-width: 52rem) { html { scroll-padding-top: 8.5rem; } }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 
 body {
@@ -109,7 +111,7 @@ main:focus { outline: none; }
 }
 .site-header nav ul {
   list-style: none; margin: 0; padding: 0;
-  display: flex; flex-wrap: wrap; gap: .1rem .9rem;
+  display: flex; flex-wrap: wrap; gap: .1rem .75rem;
 }
 .site-header nav a {
   display: inline-block; padding: .3rem 0;
@@ -201,6 +203,11 @@ th .unknown::before { content: ""; }
 .card .meta { margin-bottom: .6rem; }
 .card .links { margin-top: auto; padding-top: .75rem; border-top: 1px solid var(--border); flex-direction: column; gap: .3rem; }
 .to-confirm { font-size: .95rem; margin-bottom: .75rem; }
+.card .paper { margin: auto 0 .25rem; padding-top: .75rem; border-top: 1px solid var(--border); }
+
+/* Thesis direction */
+.direction > p, .direction > .to-confirm { max-width: var(--measure); }
+.direction .cards { margin-bottom: 1.25rem; }
 
 .video { margin: .5rem 0 1.25rem; }
 .video video {

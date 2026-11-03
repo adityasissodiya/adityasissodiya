@@ -100,6 +100,37 @@ url = "https://www.overleaf.com/project/69b3cbba0af437217d33f8dd"
 access = "sign-in"
 
 # --------------------------------------------------------------------------------------------
+# Thesis direction: a working framing, shown after Ongoing research.
+# as_of is this section's own date; it is separate from site.status_date.
+# Each paper must match the start of a [[research]] label or a [[publications]] title. Its status
+# label is taken from that entry, and the build fails if there is no match.
+
+[direction]
+as_of = "2026-11-03"
+note = "This describes how the doctoral work is intended to fit together. It is not a committed plan, and it will change as results come in."
+questions = "The licentiate asked two questions about systems shared by several organisations: how stakeholders can agree on access rules for resources they share, and how those rules can be enforced consistently without a central authority. The doctoral work adds a third: when no single authority is in charge and connectivity cannot be assumed, who may decide, and when does a decision become final?"
+hypothesis = "The working hypothesis is that two kinds of decision need different answers:"
+further = "Further directions are connecting negotiated agreements to how they are enforced, studying systems in which both kinds of decision occur together, and handling AI agents that act on someone's behalf."
+further_paper = "Task-Scoped Authorization for Local AI Agents"
+further_paper_note = "begins to explore the last of these."
+status_key = "exploratory"
+status_label = "Preliminary"
+status_detail = "The three questions are a working framing. The distinction between the two kinds of decision is preliminary and has not been tested beyond the two cases above."
+to_confirm = ["Doctoral thesis title and research questions", "Which ongoing papers will form part of the doctoral thesis"]
+
+[[direction.kinds]]
+title = "Who may act"
+text = "Several organisations hold legitimate authority, and the effects of a decision can be revised. A decision can stay tentative while devices are disconnected and be settled when they reconcile."
+paper = "EQuack"
+paper_note = "studies this case."
+
+[[direction.kinds]]
+title = "Which order binds"
+text = "One person holds authority at a time, and effects may be irreversible. Incident command is the example: authority must stay attributable, including when it passes to a successor because the commander is cut off."
+paper = "Command Succession under Intermittent Connectivity"
+paper_note = "studies this case."
+
+# --------------------------------------------------------------------------------------------
 # Next-action tracker. Edit freely. Keep kind = "suggested" until an action is agreed.
 
 [[actions]]
@@ -296,6 +327,8 @@ date = ""
 items = [
   "Target venue and submission date for rescue-ois",
   "Agreed scope and author list of the Task-Scoped Authorization paper",
+  "Doctoral thesis title and research questions",
+  "Which ongoing papers will form part of the doctoral thesis",
   "Programming for PhD students: period and assessment deadlines",
   "Course codes for IoT-based industrial automation and digitalization, and Advanced Data Mining",
   "Planned courses, and the course credits required for the doctorate",

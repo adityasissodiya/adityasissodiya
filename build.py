@@ -20,6 +20,7 @@ ASSETS = ROOT / "assets"
 
 NAV = [
     ("research", "Research"),
+    ("thesis-direction", "Thesis direction"),
     ("next-actions", "Next actions"),
     ("publications", "Publications"),
     ("thesis", "Licentiate thesis"),
@@ -117,15 +118,51 @@ def render_video(v: dict, base: str) -> str:
     </figure>"""
 
 
+def to_confirm(items: list[str]) -> str:
+    if not items:
+        return ""
+    lis = "".join(f"<li>{e(t)}</li>" for t in items)
+    return f'<div class="to-confirm"><p class="small-heading">To confirm</p><ul>{lis}</ul></div>'
+
+
+def paper_ref(c: dict, name: str) -> str:
+    """A paper's name and status label, with the status taken from its entry on the page."""
+    for r in c["research"]:
+        if r["label"].startswith(name):
+            return f"<cite>{e(name)}</cite> {status(r['status_key'], r['status_label'])}"
+    if any(p["title"].startswith(name) for p in c["publications"]):
+        return f"<cite>{e(name)}</cite> {status('published', 'Published')}"
+    raise ValueError(f"[direction] names {name!r}, which matches no [[research]] or [[publications]] entry")
+
+
+def render_direction(c: dict) -> str:
+    d = c["direction"]
+    kinds = "".join(f"""
+    <article class="card">
+      <h3>{e(k['title'])}</h3>
+      <p>{e(k['text'])}</p>
+      <p class="paper">{paper_ref(c, k['paper'])} {e(k['paper_note'])}</p>
+    </article>""" for k in d["kinds"])
+    return f"""
+<section id="thesis-direction" class="direction" aria-labelledby="direction-h">
+  <h2 id="direction-h">Thesis direction</h2>
+  <p class="section-note">Working framing as of <time datetime="{e(d['as_of'])}">{fmt_date(d['as_of'])}</time>. {e(d['note'])}</p>
+  <p>{e(d['questions'])}</p>
+  <p>{e(d['hypothesis'])}</p>
+  <div class="cards">{kinds}
+  </div>
+  <p>{e(d['further'])} {paper_ref(c, d['further_paper'])} {e(d['further_paper_note'])}</p>
+  <p>{status(d['status_key'], d['status_label'])} {e(d['status_detail'])}</p>
+  {to_confirm(d.get('to_confirm', []))}
+</section>"""
+
+
 def render_research(c: dict, base: str) -> str:
     cards = []
     for r in c["research"]:
         video = render_video(r["video"], base) if r.get("video") else ""
         summary = f"<p>{e(r['summary'])}</p>" if r.get("summary") else ""
-        confirm = ""
-        if r.get("to_confirm"):
-            items = "".join(f"<li>{e(t)}</li>" for t in r["to_confirm"])
-            confirm = f'<div class="to-confirm"><p class="small-heading">To confirm</p><ul>{items}</ul></div>'
+        confirm = to_confirm(r.get("to_confirm", []))
         cards.append(f"""
   <article class="card{' card-wide' if video else ''}">
     <div class="card-head">
@@ -398,6 +435,7 @@ def build(out: Path) -> None:
     body = "".join([
         render_profile(c, base),
         render_research(c, base),
+        render_direction(c),
         render_actions(c),
         render_publications(c),
         render_thesis(c),
