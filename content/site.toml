@@ -255,6 +255,31 @@ url = "https://canvas.ltu.se/courses/27166"
 access = "sign-in"
 
 [[courses]]
+title = "TCS Introduction Course at SRT"
+code = ""
+credits = "4.0"
+status_key = "ongoing"
+status_label = "Ongoing"
+
+[[courses]]
+title = "Research methodologies and AI"
+code = ""
+credits = "4.5"
+status_key = "ongoing"
+status_label = "Ongoing"
+
+[[courses]]
+title = "Agentic AI Security, Identity, and Access Control (self-study)"
+code = ""
+credits = "7.5"
+status_key = "ongoing"
+status_label = "Ongoing"
+
+[[courses.links]]
+label = "Repository"
+url = "https://github.com/adityasissodiya/self-ml-course"
+
+[[courses]]
 title = "Mobile and distributed computing systems"
 code = "D7024E"
 credits = "7.5"
@@ -290,23 +315,9 @@ status_key = "completed"
 status_label = "Completed"
 
 [[courses]]
-title = "TCS Introduction Course at SRT"
-code = ""
-credits = "1.5"
-status_key = "todo"
-status_label = "Planned"
-
-[[courses]]
 title = "Computer system security"
 code = ""
 credits = "7.5"
-status_key = "todo"
-status_label = "Planned"
-
-[[courses]]
-title = "Digital Product Passports"
-code = ""
-credits = "3.0"
 status_key = "todo"
 status_label = "Planned"
 
@@ -330,17 +341,6 @@ code = ""
 credits = "2.5"
 status_key = "todo"
 status_label = "Planned"
-
-[[courses]]
-title = "Agentic AI Security, Identity, and Access Control (self-study)"
-code = ""
-credits = "7.5"
-status_key = "todo"
-status_label = "Planned"
-
-[[courses.links]]
-label = "Repository"
-url = "https://github.com/adityasissodiya/self-ml-course"
 
 # --------------------------------------------------------------------------------------------
 # Study planning. Credit figures are copied from Ladok; build.py checks that course_credits

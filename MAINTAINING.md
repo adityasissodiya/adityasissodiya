@@ -125,6 +125,10 @@ python3 -m http.server -d /tmp/preview 8000   # open http://localhost:8000/adity
   completed courses shows no code for either D7042E or D7043E.
 - The self-study course title, "Agentic AI Security, Identity, and Access Control", is from its
   repository README; the ISP lists that course only by its repository address.
+- Course changes supplied by Aditya on 2026-11-12, not checked against Ladok: TCS Introduction
+  Course at SRT is ongoing and worth 4.0 hp (the ISP listed 1.5 hp); the self-study course is
+  ongoing; Research methodologies and AI (4.5 hp) is a new ongoing course; Digital Product
+  Passports is no longer planned. Course codes for these were not supplied.
 - Background photo (`assets/aurora-*.webp`): supplied by Aditya on 2026-11-03 as `IMG_0659.JPG`;
   resized to WebP with its metadata removed.
 
