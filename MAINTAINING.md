@@ -56,6 +56,10 @@ python3 -m http.server -d /tmp/preview 8000   # open http://localhost:8000/adity
   `assets/video/`, then add this line to the research entry, above its `[[research.links]]`:
   `video = { src = "assets/video/x.mp4", poster = "assets/video/x-poster.jpg", captions = "assets/video/x.en.vtt", title = "...", caption = "..." }`.
   Everything in `assets/` is published, whether or not the page links to it.
+- **Documents (PDF):** put the file in `assets/docs/` and add it to a research entry as
+  `url = "assets/docs/x.pdf"`; the build adds the base path. Before adding one, remove its metadata
+  and black out email addresses and any link that grants access (for example a resubmission link
+  that works without logging in). Everything in `assets/` is published.
 - **Landing video:** `[profile.video]` in `content/site.toml` shows a video under the profile text.
   It takes the same fields as above, plus an optional `transcript`. The current video has its
   captions burned into the picture, so it has no `.vtt`. If the narration changes, change the

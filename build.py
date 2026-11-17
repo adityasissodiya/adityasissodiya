@@ -64,20 +64,27 @@ def status(key: str, label: str) -> str:
     return f'<span class="status status-{key}">{e(label)}</span>'
 
 
-def link(item: dict) -> str:
+def link(item: dict, base: str = "") -> str:
     url, label = item["url"], item["label"]
     external = urlparse(url).scheme in {"http", "https"}
     attrs = ' rel="noopener"' if external else ""
+    if is_local_file(url):
+        url = base + url
     out = f'<a href="{e(url)}"{attrs}>{e(label)}</a>'
     if item.get("access") == "sign-in":
         out += ' <span class="access">Sign-in may be required</span>'
     return out
 
 
-def link_list(items: list[dict], cls: str = "links") -> str:
+def is_local_file(url: str) -> bool:
+    """A path into assets/, such as "assets/docs/x.pdf"; the build prefixes the base path."""
+    return url.startswith("assets/")
+
+
+def link_list(items: list[dict], cls: str = "links", base: str = "") -> str:
     if not items:
         return ""
-    lis = "".join(f"<li>{link(i)}</li>" for i in items)
+    lis = "".join(f"<li>{link(i, base)}</li>" for i in items)
     return f'<ul class="{cls}">{lis}</ul>'
 
 
@@ -183,7 +190,7 @@ def render_research(c: dict, base: str) -> str:
     {summary}
     {video}
     {confirm}
-    {link_list(r.get('links', []))}
+    {link_list(r.get('links', []), base=base)}
   </article>""")
     date = fmt_date(c["site"]["status_date"])
     return f"""

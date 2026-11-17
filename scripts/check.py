@@ -113,6 +113,8 @@ def main() -> int:
     # 2. every content URL is in the page, unchanged
     page_hrefs = {r.replace("&amp;", "&") for r in col.refs}
     for url in content_urls(c):
+        if url.startswith("assets/"):  # local file; the build prefixes the base path
+            url = base + url
         if url not in page_hrefs:
             errors.append(f"content URL missing from page: {url}")
     if f"mailto:{c['profile']['email']}" not in page_hrefs:

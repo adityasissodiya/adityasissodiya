@@ -15,7 +15,7 @@ description = "PhD research on access control in data ecosystems at Luleå Unive
 base_url = "https://adityasissodiya.github.io/adityasissodiya/"
 # The date the content below was last checked. Change it only when you review the content,
 # not when you fix typos or styling.
-status_date = "2026-10-28"
+status_date = "2026-11-17"
 
 [profile]
 name = "Aditya Sissodiya"
@@ -95,11 +95,11 @@ url = "https://www.ltu.se/en/staff/c/casper-lundberg"
 
 [[research]]
 label = "EQuack: Deterministic Replay for Eventually Consistent Access Control"
-label_note = "IEEE Internet of Things Journal, regular article."
+label_note = "IEEE Internet of Things Journal, regular article (manuscript IoT-67878-2026)."
 authors = "Aditya Sissodiya, Johan Kristiansson, Eric Chiquito, and Ulf Bodin"
-status_key = "review"
-status_label = "Under review"
-status_detail = "Submitted on 3 June 2026; awaiting decision."
+status_key = "preparation"
+status_label = "Resubmission invited"
+status_detail = "Submitted on 3 June 2026. On 16 November 2026 the journal declined this version and invited a revised resubmission, which will be reviewed as a new submission."
 summary = "An access-control model for intermittently connected, multi-stakeholder systems: replicas keep operating while disconnected and, after reconnecting, converge on the same authorized state by deterministically replaying a shared log through a deny-wins authorization gate. Evaluated with a Rust prototype."
 to_confirm = []
 
@@ -107,6 +107,11 @@ to_confirm = []
 label = "Manuscript (Overleaf)"
 url = "https://www.overleaf.com/project/69b3cbba0af437217d33f8dd"
 access = "sign-in"
+
+# The decision email as a PDF, with email addresses and the no-login resubmission link blacked out.
+[[research.links]]
+label = "Editorial decision and reviews (PDF)"
+url = "assets/docs/equack-iotj-decision-2026-11-16.pdf"
 
 # --------------------------------------------------------------------------------------------
 # Thesis direction: a working framing, shown after Ongoing research.
@@ -156,7 +161,7 @@ target_date = ""
 
 [[actions]]
 effort = "EQuack (IEEE Internet of Things Journal)"
-next_action = "Check the editorial status; plan a response once a decision arrives."
+next_action = "Revise for resubmission: make the conflict rule for concurrent grants and revocations explicit, show that checkpoint replay stays correct when earlier events arrive late, and extend the evaluation. Resubmit with a response to the reviews, citing IoT-67878-2026."
 kind = "suggested"
 target_date = ""
 
