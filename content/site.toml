@@ -25,7 +25,7 @@ focus = "My research concerns access control in data ecosystems: how stakeholder
 email = "aditya.sissodiya@ltu.se"
 # Portrait shown beside the name. Path is relative to the site root; leave "" to hide it.
 photo = "assets/aditya.jpg"
-photo_alt = "Portrait of Aditya Sissodiya"
+photo_alt = "Aditya Sissodiya sitting on rocks beside river rapids, with pine forest behind"
 
 [[profile.links]]
 label = "LTU staff profile"

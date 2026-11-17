@@ -135,6 +135,8 @@ python3 -m http.server -d /tmp/preview 8000   # open http://localhost:8000/adity
   Passports is no longer planned. Course codes for these were not supplied.
 - Background photo (`assets/aurora-*.webp`): supplied by Aditya on 2026-11-03 as `IMG_0659.JPG`;
   resized to WebP with its metadata removed.
+- Portrait (`assets/aditya.jpg`): supplied by Aditya on 2026-11-17 as `file.enc` (a JPEG);
+  resized to 480×480 with its metadata removed.
 
 ## Maintenance checklist (information still missing)
 
