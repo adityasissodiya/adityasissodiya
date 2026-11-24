@@ -111,6 +111,10 @@ python3 -m http.server -d /tmp/preview 8000   # open http://localhost:8000/adity
   date (3 June 2026) from the journal's submission overview, supplied by Aditya on 2026-10-28.
   The one-line summary paraphrases the submitted abstract and the public licentiate thesis.
   Co-author emails, funding details and manuscript files are deliberately not published.
+- EQuack's move to the Journal of Information Security and Applications: from the revised
+  manuscript and its Overleaf project, supplied by Aditya on 2026-11-24. The share token in the
+  supplied link was left out. The journal uses single-anonymized review, so the paper can be named.
+  The one-line summary now paraphrases the revised abstract.
 - rescue-ois manuscript title and author order: supplied by Aditya on 2026-10-28.
 - Task-Scoped Authorization: working title, Casper Lundberg's LTU profile and the Overleaf
   project supplied by Aditya on 2026-10-28. The Overleaf share token in the supplied link was
